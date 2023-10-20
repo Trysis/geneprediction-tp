@@ -256,7 +256,7 @@ def main() -> None: # pragma: no cover
     genes_rv = predict_genes(sequence_rc, start_regex, stop_regex, shine_regex, 
                              args.min_gene_len, args.max_shine_dalgarno_distance, args.min_gap)
     
-    genes_rv = sorted([[pos_i, pos_j] for pos_i, pos_j in genes_rv],
+    genes_rv = sorted([[len(sequence) - pos_j + 1, len(sequence) - pos_i + 1] for pos_i, pos_j in genes_rv],
                       key=lambda kv: kv[0])
 
     all_genes = sorted(genes + genes_rv, key=lambda kv: kv[0])
